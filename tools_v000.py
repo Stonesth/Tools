@@ -24,6 +24,11 @@ def createProperties(save_path, properties_name) :
     file1.write("========================================================================================================================"+"\n")
     file1.write(datetime.now().strftime("%Y-%m-%d %H:%M:%S") + "\n")
     file1.close() 
+    
+def createFile(path, nameOfTheFile) :
+    completePath = os.path.join(path, nameOfTheFile)
+    file = open(completePath, "w")
+    file.close()
 
 def readProperty(propertiesFolder_path, projectName, property_name):
     if not os.path.exists(propertiesFolder_path + '/' + projectName + '_properties_v001.txt') :
