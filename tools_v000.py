@@ -50,7 +50,7 @@ def readProperty(propertiesFolder_path, projectName, property_name):
 def openBrowserChrome() :
     project_root = dirname(__file__)
 
-    PATH = project_root + "/ChromeDriver/83.0.4103.39/chromedriver.exe"
+    PATH = project_root + "/ChromeDriver/85.0.4183.87/chromedriver.exe"
     global driver
     driver = webdriver.Chrome(PATH)
 
