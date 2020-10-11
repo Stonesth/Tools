@@ -1,5 +1,6 @@
 import os
 import subprocess
+import platform
 from os.path import dirname
 from selenium import webdriver
 from datetime import datetime
@@ -50,7 +51,18 @@ def readProperty(propertiesFolder_path, projectName, property_name):
 def openBrowserChrome() :
     project_root = dirname(__file__)
 
-    PATH = project_root + "/ChromeDriver/85.0.4183.87/chromedriver.exe"
+    print ("openBrowserChrome :" + project_root)
+
+    print ("os.name = " + os.name)
+    print ("platform.system() = " + platform.system())
+    print ("platform.release() = " + platform.release())
+
+    if platform.system() == 'Darwin' :
+        PATH = project_root + "/ChromeDriver/86.0.4240.22/chromedriver"
+    else :
+        PATH = project_root + "/ChromeDriver/85.0.4183.87/chromedriver.exe"
+
+    print ("PATH = " + PATH)
     global driver
     driver = webdriver.Chrome(PATH)
 
@@ -58,7 +70,7 @@ def closeBrowserChrome() :
     driver.close()
 
 def createFolder(save_path, folderName) :
-    os.mkdir(save_path + '\\'+ folderName)
+    os.mkdir(save_path + folderName)
 
 def openFolder(path) :
     # for python version 3.x
