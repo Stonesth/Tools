@@ -134,8 +134,22 @@ def waitLoadingPageByID(IdOfMyElement) :
     except TimeoutException:
         print ("Loading took too much time! for the id : " + IdOfMyElement)
 
+def waitLoadingPageByID2(delay, IdOfMyElement) :
+    try :
+        myElem = WebDriverWait(driver, delay).until(EC.presence_of_element_located((By.ID, IdOfMyElement)))
+        print ("Page is ready!")
+    except TimeoutException:
+        print ("Loading took too much time! for the id : " + IdOfMyElement)
+
 def waitLoadingPageByXPATH(xpathOfMyElement) :
     delay = 10 # 10 sec
+    try :
+        myElem = WebDriverWait(driver, delay).until(EC.presence_of_element_located((By.XPATH, xpathOfMyElement)))
+        print ("Page is ready!")
+    except TimeoutException:
+        print ("Loading took too much time! for the id : " + xpathOfMyElement)
+
+def waitLoadingPageByXPATH2(delay, xpathOfMyElement) :
     try :
         myElem = WebDriverWait(driver, delay).until(EC.presence_of_element_located((By.XPATH, xpathOfMyElement)))
         print ("Page is ready!")
