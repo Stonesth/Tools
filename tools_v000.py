@@ -87,7 +87,7 @@ def openBrowserBrave() :
     if platform.system() == 'Darwin' :
         option.binary_location = "/Applications/Brave Browser.app/Contents/MacOS/Brave Browser"
     else :
-        option.binary_location = "C:"
+        option.binary_location = "C:\\Program Files\\BraveSoftware\\Brave-Browser\\Application\\brave.exe"
 
     driver = webdriver.Chrome(executable_path=PATH, chrome_options=option)
 
