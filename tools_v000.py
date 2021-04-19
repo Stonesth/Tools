@@ -58,13 +58,35 @@ def openBrowserChrome() :
     print ("platform.release() = " + platform.release())
 
     if platform.system() == 'Darwin' :
+        PATH = project_root + "/ChromeDriver/88.0.4324.96/chromedriver"
+    else :
+        PATH = project_root + "/ChromeDriver/87.0.4280.88/chromedriver.exe"
+
+    print ("PATH = " + PATH)
+    global driver
+    driver = webdriver.Chrome(PATH)
+
+def openBrowserBrave() :
+    project_root = dirname(__file__)
+
+    print ("openBrowserChrome :" + project_root)
+
+    print ("os.name = " + os.name)
+    print ("platform.system() = " + platform.system())
+    print ("platform.release() = " + platform.release())
+
+    if platform.system() == 'Darwin' :
         PATH = project_root + "/ChromeDriver/89.0.4389.23/chromedriver"
     else :
         PATH = project_root + "/ChromeDriver/90.0.4430.24/chromedriver.exe"
 
     print ("PATH = " + PATH)
     global driver
-    driver = webdriver.Chrome(PATH)
+
+    option = webdriver.ChromeOptions()
+    option.binary_location = "/Applications/Brave Browser.app/Contents/MacOS/Brave Browser"
+
+    driver = webdriver.Chrome(executable_path=PATH, chrome_options=option)
 
 def closeBrowserChrome() :
     driver.close()
