@@ -89,6 +89,7 @@ def openBrowserBrave() :
     else :
         option.binary_location = "C:\\Program Files\\BraveSoftware\\Brave-Browser\\Application\\brave.exe"
 
+    print ("option.binary_location = " + option.binary_location)
     driver = webdriver.Chrome(executable_path=PATH, chrome_options=option)
 
 def closeBrowserChrome() :
