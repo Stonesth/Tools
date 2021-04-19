@@ -58,7 +58,7 @@ def openBrowserChrome() :
     print ("platform.release() = " + platform.release())
 
     if platform.system() == 'Darwin' :
-        PATH = project_root + "/ChromeDriver/88.0.4324.96/chromedriver"
+        PATH = project_root + "/ChromeDriver/89.0.4389.23/chromedriver"
     else :
         PATH = project_root + "/ChromeDriver/90.0.4430.24/chromedriver.exe"
 
