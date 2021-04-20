@@ -109,14 +109,14 @@ def openBrowserFirefox() :
     print ("PATH = " + PATH)
     global driver
 
-    option = webdriver.ChromeOptions()
+    option = webdriver.FirefoxOptions()
     if platform.system() == 'Darwin' :
         option.binary_location = "/Applications/Firefox.app/Contents/MacOS/firefox-bin"
     else :
-        option.binary_location = "C:\\Program Files\\BraveSoftware\\Brave-Browser\\Application\\brave.exe"
+        option.binary_location = ""
 
     print ("option.binary_location = " + option.binary_location)
-    driver = webdriver.Chrome(executable_path=PATH, chrome_options=option)
+    driver = webdriver.Firefox(executable_path=PATH, firefox_options=option)
 
 
 def closeBrowserChrome() :
