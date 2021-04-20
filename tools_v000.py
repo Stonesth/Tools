@@ -4,10 +4,12 @@ import platform
 from os.path import dirname
 from selenium import webdriver
 from datetime import datetime
+from selenium.webdriver.firefox.options import Options
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import TimeoutException
+
 
 driver = ""
 
@@ -102,21 +104,14 @@ def openBrowserFirefox() :
     print ("platform.release() = " + platform.release())
 
     if platform.system() == 'Darwin' :
-        PATH = project_root + "/ChromeDriver/89.0.4389.23/chromedriver"
+        PATH = project_root + "/FireFoxDriver/geckodriver"
     else :
         PATH = project_root + "/ChromeDriver/90.0.4430.24/chromedriver.exe"
 
     print ("PATH = " + PATH)
     global driver
 
-    option = webdriver.FirefoxOptions()
-    if platform.system() == 'Darwin' :
-        option.binary_location = "/Applications/Firefox.app/Contents/MacOS/firefox-bin"
-    else :
-        option.binary_location = ""
-
-    print ("option.binary_location = " + option.binary_location)
-    driver = webdriver.Firefox(executable_path=PATH, firefox_options=option)
+    driver = webdriver.Firefox(executable_path = PATH)
 
 
 def closeBrowserChrome() :
