@@ -60,7 +60,7 @@ def openBrowserChrome() :
     if platform.system() == 'Darwin' :
         PATH = project_root + "/ChromeDriver/89.0.4389.23/chromedriver"
     else :
-        PATH = project_root + "/ChromeDriver/90.0.4430.24/chromedriver.exe"
+        PATH = project_root + "/ChromeDriver/89.0.4389.23/chromedriver.exe"
 
     print ("PATH = " + PATH)
     global driver
