@@ -4,17 +4,19 @@ import platform
 from os.path import dirname
 from selenium import webdriver
 from datetime import datetime
-from selenium.webdriver.firefox.options import Options
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import TimeoutException
 
+<<<<<<< HEAD
 import geckodriver_autoinstaller
 
 from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
+=======
+>>>>>>> d275606413283954ce8d91a4f14a993bbfe029d6
 driver = ""
 
 def createProperties(save_path, properties_name) :
@@ -64,30 +66,13 @@ def openBrowserChrome() :
     print ("platform.release() = " + platform.release())
 
     if platform.system() == 'Darwin' :
-        PATH = project_root + "/ChromeDriver/88.0.4324.96/chromedriver"
-    else :
-        PATH = project_root + "/ChromeDriver/87.0.4280.88/chromedriver.exe"
-
-    print ("PATH = " + PATH)
-    global driver
-    driver = webdriver.Chrome(PATH)
-
-def openBrowserBrave() :
-    project_root = dirname(__file__)
-
-    print ("openBrowserBrave :" + project_root)
-
-    print ("os.name = " + os.name)
-    print ("platform.system() = " + platform.system())
-    print ("platform.release() = " + platform.release())
-
-    if platform.system() == 'Darwin' :
         PATH = project_root + "/ChromeDriver/89.0.4389.23/chromedriver"
     else :
         PATH = project_root + "/ChromeDriver/90.0.4430.24/chromedriver.exe"
 
     print ("PATH = " + PATH)
     global driver
+<<<<<<< HEAD
 
     option = webdriver.ChromeOptions()
     if platform.system() == 'Darwin' :
@@ -166,6 +151,9 @@ def openBrowserFirefox() :
 
     # driver = webdriver.Firefox(executable_path = PATH)
 
+=======
+    driver = webdriver.Chrome(PATH)
+>>>>>>> d275606413283954ce8d91a4f14a993bbfe029d6
 
 def closeBrowserChrome() :
     driver.close()
