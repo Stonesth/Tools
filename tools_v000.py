@@ -10,6 +10,10 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import TimeoutException
 
+import geckodriver_autoinstaller
+
+from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
+from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
 driver = ""
 
@@ -94,7 +98,7 @@ def openBrowserBrave() :
     print ("option.binary_location = " + option.binary_location)
     driver = webdriver.Chrome(executable_path=PATH, chrome_options=option)
 
-def openBrowserFirefox() :
+def openBrowserFirefox_2() :
     project_root = dirname(__file__)
 
     print ("openBrowserFireFox :" + project_root)
@@ -112,6 +116,55 @@ def openBrowserFirefox() :
     global driver
 
     driver = webdriver.Firefox(executable_path = PATH)
+
+def openBrowserFirefox() :
+    project_root = dirname(__file__)
+
+    print ("openBrowserFireFox :" + project_root)
+
+    print ("os.name = " + os.name)
+    print ("platform.system() = " + platform.system())
+    print ("platform.release() = " + platform.release())
+
+    geckodriver_autoinstaller.install()
+    profile = webdriver.FirefoxProfile('/Users/thononpierre/Library/Application Support/Firefox/Profiles/trucmuch.default-release')
+
+    profile.set_preference("dom.webdriver.enabled", False)
+    profile.set_preference('useAutomationExtension', False)
+    # profile.set_preference('marionette.enabled', True)
+    profile.update_preferences()
+
+    desired = DesiredCapabilities.FIREFOX
+
+    # In higher version it's not possible to set marionette to False
+    # desired['marionette'] = False
+
+    global driver
+    driver = webdriver.Firefox(firefox_profile=profile, capabilities=desired)
+
+    #Remove navigator.webdriver Flag using JavaScript
+    # driver.execute_script("Object.defineProperty(navigator, 'webdriver', {get: () => undefined})")
+
+    
+# options.addArguments("--no-sandbox");
+#             options.addArguments("--disable-dev-shm-usage");
+#             options.addArguments("--disable-blink-features");
+#             options.setExperimentalOption("excludeSwitches", Arrays.asList("enable-automation"));
+#             options.addArguments("--disable-blink-features=AutomationControlled");
+#             options.addArguments("--disable-infobars");
+
+#         options.addArguments("--remote-debugging-port=9222");
+
+# options.setCapability(CapabilityType.UNEXPECTED_ALERT_BEHAVIOUR, UnexpectedAlertBehaviour.IGNORE);
+
+# driver.executeScript("Object.defineProperty(navigator, 'webdriver', {get: () => undefined})");
+
+
+
+    # print ("PATH = " + PATH)
+    
+
+    # driver = webdriver.Firefox(executable_path = PATH)
 
 
 def closeBrowserChrome() :
@@ -215,3 +268,12 @@ def waitLoadingPageByXPATH2(delay, xpathOfMyElement) :
         # print ("Page is ready!")
     except TimeoutException:
         print ("Loading took too much time! for the id : " + xpathOfMyElement)
+
+openBrowserFirefox()
+
+# driver.get("https://www.bepluscenters.com/sportcity-woluwe/login")
+# driver.get("https://www.whatismybrowser.com/")
+driver.get("https://www.google.com/recaptcha/api2/demo")
+
+
+driver.quit()
