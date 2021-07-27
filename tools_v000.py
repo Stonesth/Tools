@@ -8,8 +8,9 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import TimeoutException
+from chromedriver_py import binary_path # this will get you the path variable
 
-import geckodriver_autoinstaller
+# import geckodriver_autoinstaller
 
 from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
@@ -37,7 +38,9 @@ def createFile(path, nameOfTheFile) :
     file.close()
 
 def readProperty(propertiesFolder_path, projectName, property_name):
-    if not os.path.exists(propertiesFolder_path + '/' + projectName + '_properties_v001.txt') :
+    print ("propertiesFolder_path : " + propertiesFolder_path)
+    print ("projectName : " + projectName)
+    if not os.path.exists(propertiesFolder_path + '/' + projectName + '_propersties_v001.txt') :
         print ("No properties => create the file")
         createProperties(propertiesFolder_path, projectName)
     
@@ -53,7 +56,7 @@ def readProperty(propertiesFolder_path, projectName, property_name):
     
     return property_value
 
-def openBrowserChrome() :
+def openBrowserChrome_2() :
     project_root = dirname(__file__)
 
     print ("openBrowserChrome :" + project_root)
@@ -78,6 +81,18 @@ def openBrowserChrome() :
 
     print ("option.binary_location = " + option.binary_location)
     driver = webdriver.Chrome(executable_path=PATH, chrome_options=option)
+
+def openBrowserChrome() :
+    project_root = dirname(__file__)
+
+    print ("openBrowserChrome :" + project_root)
+
+    print ("os.name = " + os.name)
+    print ("platform.system() = " + platform.system())
+    print ("platform.release() = " + platform.release())
+
+    global driver
+    driver = webdriver.Chrome(executable_path=binary_path)
 
 def openBrowserFirefox_2() :
     project_root = dirname(__file__)
@@ -255,6 +270,10 @@ def waitLoadingPageByXPATH2(delay, xpathOfMyElement) :
 # driver.get("https://www.bepluscenters.com/sportcity-woluwe/login")
 # driver.get("https://www.whatismybrowser.com/")
 # driver.get("https://www.google.com/recaptcha/api2/demo")
+
+# openBrowserChrome()
+# driver.get("http://www.python.org")
+
 
 
 # driver.quit()
