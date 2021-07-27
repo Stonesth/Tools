@@ -40,7 +40,7 @@ def createFile(path, nameOfTheFile) :
 def readProperty(propertiesFolder_path, projectName, property_name):
     print ("propertiesFolder_path : " + propertiesFolder_path)
     print ("projectName : " + projectName)
-    if not os.path.exists(propertiesFolder_path + '/' + projectName + '_propersties_v001.txt') :
+    if not os.path.exists(propertiesFolder_path + '/' + projectName + '_properties_v001.txt') :
         print ("No properties => create the file")
         createProperties(propertiesFolder_path, projectName)
     
