@@ -93,6 +93,7 @@ def openBrowserChrome() :
     print ("platform.release() = " + platform.release())
 
     global driver
+    driver = webdriver.Chrome(ChromeDriverManager().install())
     driver = webdriver.Chrome(executable_path=binary_path)
 
 def openBrowserFirefox_2() :
