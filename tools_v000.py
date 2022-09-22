@@ -83,6 +83,18 @@ def openBrowserChrome_2() :
     print ("option.binary_location = " + option.binary_location)
     driver = webdriver.Chrome(executable_path=PATH, chrome_options=option)
 
+# def openBrowserChrome() :
+#     project_root = dirname(__file__)
+
+#     print ("openBrowserChrome :" + project_root)
+
+#     print ("os.name = " + os.name)
+#     print ("platform.system() = " + platform.system())
+#     print ("platform.release() = " + platform.release())
+
+#     global driver
+#     driver = webdriver.Chrome(ChromeDriverManager().install())
+#     driver = webdriver.Chrome(executable_path=binary_path)
 def openBrowserChrome() :
     project_root = dirname(__file__)
 
@@ -93,9 +105,8 @@ def openBrowserChrome() :
     print ("platform.release() = " + platform.release())
 
     global driver
-    driver = webdriver.Chrome(ChromeDriverManager().install())
     driver = webdriver.Chrome(executable_path=binary_path)
-
+    
 def openBrowserFirefox_2() :
     project_root = dirname(__file__)
 
