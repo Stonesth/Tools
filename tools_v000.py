@@ -277,6 +277,8 @@ def waitLoadingPageByXPATH2(delay, xpathOfMyElement) :
         # print ("Page is ready!")
     except TimeoutException:
         print ("Loading took too much time! for the id : " + xpathOfMyElement)
+        return False
+    return True
 
 # openBrowserFirefox()
 
