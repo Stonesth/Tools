@@ -107,7 +107,8 @@ def openBrowserChrome() :
     print ("binary_path = " + binary_path)
 
     global driver
-    driver = webdriver.Chrome(executable_path=binary_path)
+    svc = webdriver.ChromeService(executable_path=binary_path)
+    driver = webdriver.Chrome(service=svc)
     
 def openBrowserFirefox_2() :
     project_root = dirname(__file__)
