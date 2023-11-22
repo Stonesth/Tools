@@ -51,7 +51,7 @@ def readProperty(propertiesFolder_path, projectName, property_name):
         property_value = response[0][1][len(property_name) : ]
     else :
         print ('no response')
-        property_value = raw_input("Enter " + property_name) #String input
+        property_value = input("Enter " + property_name) #String input
         writeToFile(propertiesFolder_path + '/' + projectName + '_properties_v001.txt', '\n')
         writeToFile(propertiesFolder_path + '/' + projectName + '_properties_v001.txt', property_name + property_value)
     
