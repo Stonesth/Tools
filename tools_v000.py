@@ -104,6 +104,8 @@ def openBrowserChrome() :
     print ("platform.system() = " + platform.system())
     print ("platform.release() = " + platform.release())
 
+    print ("binary_path = " + binary_path)
+
     global driver
     driver = webdriver.Chrome(executable_path=binary_path)
     
