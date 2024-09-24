@@ -8,6 +8,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import TimeoutException
+from selenium.webdriver.chrome.options import Options
 from chromedriver_py import binary_path # this will get you the path variable
 
 # import geckodriver_autoinstaller
@@ -95,7 +96,30 @@ def openBrowserChrome_2() :
 #     global driver
 #     driver = webdriver.Chrome(ChromeDriverManager().install())
 #     driver = webdriver.Chrome(executable_path=binary_path)
+
 def openBrowserChrome() :
+    
+    global driver
+
+    # Définir les options pour Chrome
+    chrome_options = Options()
+    chrome_options.add_argument("--remote-debugging-port=9222")
+    chrome_options.add_argument("--user-data-dir=C:\\Users\\JF30LB\\Projects\\python\\Projects\\Start_Jira\\BraveUserData")  # Assurez-vous que ce chemin est correct
+    
+    # Initialiser le WebDriver avec les options
+    driver = webdriver.Chrome(options=chrome_options)
+
+    project_root = dirname(__file__)
+
+    print ("openBrowserChrome :" + project_root)
+
+    print ("os.name = " + os.name)
+    print ("platform.system() = " + platform.system())
+    print ("platform.release() = " + platform.release())
+
+    print ("binary_path = " + binary_path)
+
+def openBrowserChrome_3() :
     project_root = dirname(__file__)
 
     print ("openBrowserChrome :" + project_root)
