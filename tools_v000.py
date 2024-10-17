@@ -104,7 +104,8 @@ def openBrowserChrome() :
     # Définir les options pour Chrome
     chrome_options = Options()
     chrome_options.add_argument("--remote-debugging-port=9222")
-    chrome_options.add_argument("--user-data-dir=C:\\Users\\JF30LB\\Projects\\python\\Projects\\Start_Jira\\BraveUserData")  # Assurez-vous que ce chemin est correct
+    # chrome_options.add_argument("--user-data-dir=C:\\Users\\JF30LB\\Projects\\python\\Projects\\Start_Jira\\BraveUserData")  # Assurez-vous que ce chemin est correct
+    chrome_options.add_argument("--user-data-dir=./BraveUserData")  # Utilisation d'un chemin relatif
     
     # Initialiser le WebDriver avec les options
     driver = webdriver.Chrome(options=chrome_options)
