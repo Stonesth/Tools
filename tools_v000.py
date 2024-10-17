@@ -290,6 +290,8 @@ def waitLoadingPageByID2(delay, IdOfMyElement) :
         # print ("Page is ready!")
     except TimeoutException:
         print ("Loading took too much time! for the id : " + IdOfMyElement)
+        return False
+    return True
 
 def waitLoadingPageByXPATH(xpathOfMyElement) :
     delay = 10 # 10 sec
