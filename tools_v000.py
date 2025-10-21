@@ -319,6 +319,10 @@ def updateProperty(propertiesFolder_path, projectName, property_name, property_v
     with open(propertiesFolder_path + '/' + projectName + '_properties_v001.txt', 'r') as file:
         lines = file.readlines()
 
+    # Print lines for debugging
+    for line in lines:
+        print ("line :" + line)
+
     # Update the specific property
     with open(propertiesFolder_path + '/' + projectName + '_properties_v001.txt', 'w') as file:
         for line in lines:
