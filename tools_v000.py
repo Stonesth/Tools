@@ -331,6 +331,16 @@ def updateProperty(propertiesFolder_path, projectName, property_name, property_v
             else:
                 file.write(line)
 
+    # Testing - Read back the file to verify the update
+    with open(propertiesFolder_path + '/' + projectName + '_properties_v001.txt', 'r') as file:
+        lines = file.readlines()
+    for line in lines:
+        print ("line :" + line)
+        if line.startswith(property_name):
+            print("Updated line found: " + line)
+
+
+
 # openBrowserFirefox()
 
 # driver.get("https://www.bepluscenters.com/sportcity-woluwe/login")
