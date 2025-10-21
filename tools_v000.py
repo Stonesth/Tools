@@ -310,6 +310,23 @@ def waitLoadingPageByXPATH2(delay, xpathOfMyElement) :
         return False
     return True
 
+def updateProperty(propertiesFolder_path, projectName, property_name, property_value) :
+    print ("updateProperty :" + propertiesFolder_path + '/' + projectName + '_properties_v001.txt')
+    print ("property_name :" + property_name)
+    print ("property_value :" + property_value)
+
+    # Read all lines from the file
+    with open(propertiesFolder_path + '/' + projectName + '_properties_v001.txt', 'r') as file:
+        lines = file.readlines()
+
+    # Update the specific property
+    with open(propertiesFolder_path + '/' + projectName + '_properties_v001.txt', 'w') as file:
+        for line in lines:
+            if line.startswith(property_name):
+                file.write(property_name + property_value + '\n')
+            else:
+                file.write(line)
+
 # openBrowserFirefox()
 
 # driver.get("https://www.bepluscenters.com/sportcity-woluwe/login")
