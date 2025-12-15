@@ -58,6 +58,49 @@ def readProperty(propertiesFolder_path, projectName, property_name):
     
     return property_value
 
+def readPropertyMultyline(propertiesFolder_path, projectName, property_name):
+    """
+    Read a property that can span multiple lines.
+    Reads all lines after property_name= until the next property (line with '=') or empty line.
+    """
+    print ("propertiesFolder_path : " + propertiesFolder_path)
+    print ("projectName : " + projectName)
+    file_path = propertiesFolder_path + '/' + projectName + '_properties_v001.txt'
+    print (file_path)
+    
+    if not os.path.exists(file_path) :
+        print ("No properties => create the file")
+        createProperties(propertiesFolder_path, projectName)
+    
+    response = search_string_in_file(file_path, property_name)
+
+    if len(response) > 0 :
+        # Get the line number where the property starts
+        start_line_number = response[0][0]
+        # Get the first line value (everything after property_name)
+        property_value = response[0][1][len(property_name) : ]
+        
+        # Read all subsequent lines until we hit another property or empty line
+        with open(file_path, 'r') as read_obj:
+            lines = read_obj.readlines()
+            # Start reading from the next line after the property name
+            for i in range(start_line_number, len(lines)):
+                line = lines[i].rstrip()
+                # Stop if we encounter an empty line or another property (contains '=')
+                if line == '' or (i > start_line_number and '=' in line and not line.startswith(' ')):
+                    break
+                # Add continuation lines (lines that don't start with a property name)
+                if i > start_line_number - 1:
+                    property_value += '\n' + line
+        
+    else :
+        print ('no response')
+        property_value = input("Enter " + property_name) #String input
+        writeToFile(file_path, '\n')
+        writeToFile(file_path, property_name + property_value)
+    
+    return property_value
+
 def openBrowserChrome_2() :
     project_root = dirname(__file__)
 
