@@ -81,7 +81,7 @@ def readPropertyMultyline(propertiesFolder_path, projectName, property_name):
         property_value = response[0][1][len(property_name) : ]
         
         # Read all subsequent lines until we hit another property (not empty lines)
-        with open(file_path, 'r') as read_obj:
+        with open(file_path, 'r', encoding='utf-8') as read_obj:
             lines = read_obj.readlines()
             # Start reading from the next line after the property name
             for i in range(start_line_number, len(lines)):
@@ -278,8 +278,8 @@ def search_string_in_file(file_name, string_to_search):
     along with line numbers"""
     line_number = 0
     list_of_results = []
-    # Open the file in read only mode
-    with open(file_name, 'r') as read_obj:
+    # Open the file in read only mode with UTF-8 encoding
+    with open(file_name, 'r', encoding='utf-8') as read_obj:
         # Read all lines in the file one by one
         for line in read_obj:
             # For each line, check if line contains the string
