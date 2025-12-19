@@ -61,7 +61,7 @@ def readProperty(propertiesFolder_path, projectName, property_name):
 def readPropertyMultyline(propertiesFolder_path, projectName, property_name):
     """
     Read a property that can span multiple lines.
-    Reads all lines after property_name= until the next property (line with '=') or empty line.
+    Reads all lines after property_name= until the next property (line with '=') or end of file.
     """
     print ("propertiesFolder_path : " + propertiesFolder_path)
     print ("projectName : " + projectName)
@@ -80,16 +80,16 @@ def readPropertyMultyline(propertiesFolder_path, projectName, property_name):
         # Get the first line value (everything after property_name)
         property_value = response[0][1][len(property_name) : ]
         
-        # Read all subsequent lines until we hit another property or empty line
+        # Read all subsequent lines until we hit another property (not empty lines)
         with open(file_path, 'r') as read_obj:
             lines = read_obj.readlines()
             # Start reading from the next line after the property name
             for i in range(start_line_number, len(lines)):
                 line = lines[i].rstrip()
-                # Stop if we encounter an empty line or another property (contains '=')
-                if line == '' or (i > start_line_number and '=' in line and not line.startswith(' ')):
+                # Stop only if we encounter another property (line with '=' at the beginning)
+                if i > start_line_number - 1 and '=' in line and not line.startswith(' ') and not line.startswith('\t'):
                     break
-                # Add continuation lines (lines that don't start with a property name)
+                # Add continuation lines (including empty lines)
                 if i > start_line_number - 1:
                     property_value += '\n' + line
         
