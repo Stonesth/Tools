@@ -13,7 +13,6 @@ from chromedriver_py import binary_path # this will get you the path variable
 
 # import geckodriver_autoinstaller
 
-from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
 driver = ""
