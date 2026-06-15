@@ -146,6 +146,12 @@ def openBrowserChrome() :
     # Définir les options pour Chrome
     chrome_options = Options()
     chrome_options.add_argument("--remote-debugging-port=9222")
+    # Reduce noisy Chrome background logs (Google/MCS) without changing automation flow.
+    chrome_options.add_argument("--log-level=3")
+    chrome_options.add_argument("--disable-background-networking")
+    chrome_options.add_argument("--disable-component-update")
+    chrome_options.add_argument("--disable-domain-reliability")
+    chrome_options.add_experimental_option("excludeSwitches", ["enable-logging"])
     # chrome_options.add_argument("--user-data-dir=C:\\Users\\JF30LB\\Projects\\python\\Projects\\Start_Jira\\BraveUserData")  # Assurez-vous que ce chemin est correct
     chrome_options.add_argument("--user-data-dir=./BraveUserData")  # Utilisation d'un chemin relatif
     
